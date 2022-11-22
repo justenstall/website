@@ -1,0 +1,69 @@
+:root{
+	--light-color: #00d2ff;
+	--med-color: #006eff;
+	--dark-color: #003aea;
+	--single-color: #019eff;
+	--transparent: rgba(0,0,0,0);
+	--glass: rgba(0,0,0,.65);
+	--dark-glass: rgba(0,0,0,.65);
+	--light-glass: rgba(255,255,255,.8);
+	--gradient-new: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+}
+
+.gradient-button {
+	width: 11rem;
+	height: 7rem;
+	bottom: -5rem;
+	border-radius: 3.5rem;
+	position: relative;
+	z-index: 95;
+	appearance: none;
+	background: var(--light-color);
+	padding: 2rem 2.5rem;
+	border: none;
+	color: black;
+	font-size: 2rem;
+	font-weight: 700;
+	text-align: center;
+	letter-spacing: .1rem;
+	cursor: pointer;
+	outline: none;
+	overflow: hidden;
+	box-shadow: 0rem .3rem 2rem rgba(0,0,0,.9);
+	-webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.gradient-button-wide {
+	width: 13rem;
+	bottom: -5rem;
+	border-radius: 3.5rem;
+}
+
+.gradient-button:hover {
+	color: white;
+	box-shadow: 0rem .3rem 3rem rgba(0,0,0,.8);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.gradient-button span {
+	position: relative;
+}
+
+.gradient-button::before {
+	--size: 0;
+	content: '';
+	position: absolute;
+	left: var(--x);
+	top: var(--y);
+	width: var(--size);
+	height: var(--size);
+	background: radial-gradient(circle at center, var(--dark-color), transparent 65%);
+	transform: translate(-50%, -50%);
+	transition: width .2s ease-in, height .2s ease-in;
+}
+
+.gradient-button:hover::before {
+	--size: 40rem;
+}
