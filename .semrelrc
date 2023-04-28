@@ -1,0 +1,24 @@
+{
+  "plugins": {
+    "commit-analyzer": {
+      "name": "default"
+    },
+    "ci-condition": {
+      "name": "github"
+    },
+    "changelog-generator": {
+      "name": "default",
+      "options": {
+        "emojis": "true"
+      }
+    },
+    "hooks": {
+      "names": [
+        "exec"
+      ],
+      "options": {
+        "exec_on_no_release": "echo {{.Reason}}: {{.Message}}"
+      }
+    }
+  }
+}

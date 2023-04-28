@@ -1,0 +1,5 @@
+baseURL = 'https://justenstall.github.io/'
+languageCode = 'en-us'
+title = 'Justen Stall'
+[[module.imports]]
+path = "github.com/willfaught/paige"

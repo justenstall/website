@@ -16,5 +16,5 @@ jobs:
         id: semrel
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          update-file: VERSION
           changelog-generator-opt: "emojis=true"
+          changelog-file: CHANGELOG.md
