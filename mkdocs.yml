@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
-site_name: Justen Stall's Blog
+site_name: Justen Stall
 site_description: |
   Justen Stall's portfolio and blog.
 site_author: Justen Stall
@@ -15,9 +15,12 @@ copyright: Copyright © 2023 Justen Stall
 
 theme:
   name: material
-  logo: img/app-icon-fullres.png
-  favicon: img/favicon-blue-white-black.png
+  logo: assets/favicon-t-white-black.png
+  favicon: assets/favicon/favicon.ico
   language: en
+  font:
+    text: Inter
+    code: DM Mono
   features:
     - content.code.copy
     - navigation.sections
@@ -34,8 +37,24 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/justenstall
 
+extra_css:
+  - stylesheets/theme-colors.css
+
 docs_dir: docs
-# plugins:
+plugins:
+  - blog:
+      draft_if_future_date: true
+      categories_allowed:
+        - General
+  - social
+  # - rss:
+  #     enabled: !ENV [CI, false]
+  #     match_path: blog/posts/.*
+  #     date_from_meta:
+  #       as_creation: date
+  #     categories:
+  #       - categories
+  #       - tags
 # - glightbox
 # - blog:
 #     post_excerpt: required
@@ -63,12 +82,12 @@ docs_dir: docs
 #       emoji_index: !!python/name:material.extensions.emoji.twemoji
 #       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
-# nav:
-#   - Home: index.md
-#   - Portfolio:
-#       - Open Source Projects: portfolio/open-source.md
-#       - Past Contributions: portfolio/open-source-history.md
-#       - About me:
-#           - Biography: portfolio/biography.md
-#   - Blog:
-#       - blog/index.md
+nav:
+  - Home: index.md
+  - Portfolio:
+      - Work Experience: portfolio/work-experience.md
+      - Projects: portfolio/projects.md
+      - About me:
+          - Biography: portfolio/biography.md
+  - Blog:
+      - blog/index.md

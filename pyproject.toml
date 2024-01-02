@@ -4,12 +4,11 @@ version = "0.0.1"
 description = "Justen Stall's portfolio and blog."
 authors = ["Justen Stall <justenstall@gmail.com>"]
 readme = "README.md"
-packages = [{include = "justenstall"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 mkdocs = "^1.5.3"
-mkdocs-material = "^9.5.3"
+mkdocs-material = {extras = ["imaging"], version = "^9.5.3"}
 
 
 [build-system]

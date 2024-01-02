@@ -1,0 +1,20 @@
+{
+    "name": "Justen Stall",
+    "short_name": "Justen Stall",
+    "icons": [
+        {
+            "src": "/img/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/favicon/android-chrome-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#00598f",
+    "background_color": "#00598f",
+    "start_url": "http://www.justenwithane.com",
+    "display": "standalone"
+}
