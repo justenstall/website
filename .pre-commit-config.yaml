@@ -1,9 +1,10 @@
-repos:
-  - repo: local
-    hooks:
-      - id: mkdocs-build
-        name: Generate static site with mkdocs build
-        entry: bash -c 'task build; git add site'
-        language: system
-        types: [text]
-        stages: [commit, push, manual]
+# repos:
+#   - repo: local
+#     hooks:
+#       - id: mkdocs-build
+#         name: Generate static site with mkdocs build
+#         entry: bash -c 'task build'
+#         language: system
+#         types: [text]
+#         stages: [commit, push, manual]
+#         files: site/.*

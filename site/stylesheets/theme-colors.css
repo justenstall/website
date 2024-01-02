@@ -13,3 +13,7 @@
   --md-primary-fg-color--light: var(--light-color);
   --md-primary-fg-color--dark:  var(--dark-color);
 }
+
+.vertical-center {
+  vertical-align: center;
+}
