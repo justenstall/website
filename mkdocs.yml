@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: Justen Stall's Blog
+site_description: |
+  Justen Stall's portfolio and blog.
+site_author: Justen Stall
+site_url: https://justenstall.com
+edit_uri: ""
+copyright: Copyright © 2023 Justen Stall
+
+# home:
+#   image: images/justenstall.jpg
+#   tagline: Justen Stall
+#   description: |
+#     Data Science Engineer at the University of Dayton Research Institute.
+
+theme:
+  name: material
+  logo: img/app-icon-fullres.png
+  favicon: img/favicon-blue-white-black.png
+  language: en
+  features:
+    - content.code.copy
+    - navigation.sections
+    - navigation.top
+    - navigation.tabs
+    - navigation.indexes
+
+extra:
+  social:
+    - icon: fontawesome/brands/square-x-twitter
+      link: https://x.com/justenstall
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/justenstall
+    - icon: fontawesome/brands/github
+      link: https://github.com/justenstall
+
+docs_dir: docs
+# plugins:
+# - glightbox
+# - blog:
+#     post_excerpt: required
+#     post_url_date_format: yyyy
+#     archive_url_format: "{date}"
+#     pagination_per_page: 5
+# markdown_extensions:
+#   - attr_list
+#   - md_in_html
+#   - admonition
+#   - meta
+#   - codehilite
+#   - pymdownx.tilde
+#   - pymdownx.progressbar
+#   - pymdownx.tasklist
+#   - pymdownx.superfences
+#   - pymdownx.tabbed:
+#       alternate_style: true
+#   - pymdownx.superfences:
+#       custom_fences:
+#         - name: mermaid
+#           class: mermaid
+#           format: !!python/name:pymdownx.superfences.fence_code_format
+#   - pymdownx.emoji:
+#       emoji_index: !!python/name:material.extensions.emoji.twemoji
+#       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# nav:
+#   - Home: index.md
+#   - Portfolio:
+#       - Open Source Projects: portfolio/open-source.md
+#       - Past Contributions: portfolio/open-source-history.md
+#       - About me:
+#           - Biography: portfolio/biography.md
+#   - Blog:
+#       - blog/index.md
