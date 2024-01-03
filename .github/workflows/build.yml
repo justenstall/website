@@ -24,10 +24,9 @@ jobs:
         run: pipx install poetry==1.7.1
       - uses: actions/setup-python@v5
         with:
-          # Read python version from a file .python-version
-          python-version-file: ".python-version"
-          cache: "poetry"
-      - run: poetry install
+          python-version-file: .python-version
+          cache: poetry
+      - run: poetry install --no-root
       # From: https://github.com/knowsuchagency/poetry-install
       # - name: Install dependencies
       #   run: |
