@@ -18,14 +18,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          lfs: true
       - name: Install poetry
-        run: pipx install poetry
+        run: pipx install poetry==1.7.1
       - uses: actions/setup-python@v5
         with:
           # Read python version from a file .python-version
           python-version-file: ".python-version"
           cache: "poetry"
-      - run: which poetry
       - run: poetry install
       # From: https://github.com/knowsuchagency/poetry-install
       # - name: Install dependencies
