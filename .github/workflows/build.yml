@@ -18,23 +18,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install poetry
+        run: pipx install poetry
       - uses: actions/setup-python@v5
         with:
           # Read python version from a file .python-version
-          # python-version-file: ".python-version"
+          python-version-file: ".python-version"
           cache: "poetry"
       - run: which poetry
+      - run: poetry install
       # From: https://github.com/knowsuchagency/poetry-install
-      - name: Install dependencies
-        # run: |
-        #   pip install -U pip
-        #   pip install poetry==1.7.1
-        #   poetry install
-        run: |
-          pip install poetry==1.7.1
-          poetry install
-        env:
-          POETRY_VIRTUALENVS_CREATE: false
+      # - name: Install dependencies
+      #   run: |
+      #     pip install -U pip
+      #     pip install poetry==1.7.1
+      #     poetry install
       - name: Setup MkDocs cache
         uses: actions/cache@v3
         with:
