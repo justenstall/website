@@ -25,4 +25,4 @@ The site is deployed to a CloudFlare-managed domain using [CloudFlare Pages]. Th
 [MkDocs]: <https://www.mkdocs.org/> "MkDocs"
 [Material for MkDocs]: <https://squidfunk.github.io/mkdocs-material/> "Material for MkDocs"
 [Poetry]: <https://python-poetry.org/> "Poetry"
-[CloudFlare Pages]: <https://developers.cloudflare.com/pages/>
+[CloudFlare Pages]: <https://developers.cloudflare.com/pages/> "CloudFlare Pages"
