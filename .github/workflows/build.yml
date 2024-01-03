@@ -8,7 +8,7 @@ on:
       - main
       - preview
   pull_request:
-    branches:
+    branches-ignore:
       - main
       - preview
   workflow_call:
