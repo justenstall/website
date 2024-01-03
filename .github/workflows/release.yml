@@ -1,0 +1,44 @@
+# This is the release workflow
+name: Release
+
+permissions:
+  contents: write
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches:
+      - main
+      - preview
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      do_release:
+        description: "Run the release job?"
+        required: true
+        default: false
+        type: boolean
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  release:
+    name: Release
+    if: ${{ inputs.do_release }}
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: ./.github/workflows/build.yml
+      - uses: actions/setup-node@v3
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release

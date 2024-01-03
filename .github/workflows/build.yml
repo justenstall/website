@@ -1,0 +1,47 @@
+# This is the build workflow
+name: Build
+
+# Controls when the workflow will run
+on:
+  push:
+    branches:
+      - main
+      - preview
+  pull_request:
+    branches-ignore:
+      - main
+      - preview
+  workflow_call:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    name: Build
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      # From: https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#caching-packages
+      - name: Install poetry
+        run: pipx install poetry==1.7.1
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+          cache: poetry
+      # Install with --no-root because project does produce a python package
+      - run: poetry install --no-root
+      # From: https://github.com/squidfunk/mkdocs-material/blob/master/docs/publishing-your-site.md#with-github-actions
+      - name: Setup MkDocs cache
+        uses: actions/cache@v3
+        with:
+          key: mkdocs-material-${{ github.run_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - name: Build MkDocs site
+        run: poetry run mkdocs build
