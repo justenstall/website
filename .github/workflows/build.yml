@@ -1,0 +1,51 @@
+# This is the build workflow
+name: Build
+
+# Controls when the workflow will run
+on:
+  - push
+  - pull_request
+  - workflow_call
+  - workflow_dispatch
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    name: Build
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip' # caching pip dependencies
+      # - uses: actions/cache@v3
+      #   with:
+      #     path: ~/.cache/pip
+      #     key: ${{ runner.os }}-pip-${{ hashFiles('pyproject.toml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pip-
+      # From: https://github.com/knowsuchagency/poetry-install
+      - uses: actions/setup-python@v1
+      - name: Install dependencies
+        # run: |
+        #   pip install -U pip
+        #   pip install poetry==1.7.1
+        #   poetry install
+        run: |
+          pip install poetry==1.7.1
+          poetry install
+        env:
+          POETRY_VIRTUALENVS_CREATE: false
+      - name: Setup MkDocs cache
+        uses: actions/cache@v3
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - name: Build MkDocs site
+        run: poetry run mkdocs build
