@@ -1,0 +1,76 @@
+# This is the main CI workflow
+name: new-CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: 
+      - main
+      - beta
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      do_release:
+        description: 'Run the release job?'
+        required: true
+        default: false
+        type: boolean
+
+env:
+  test_env_var: "hello!"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    name: Build
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@latest
+        with:
+          fetch-depth: 0
+      # From: https://github.com/knowsuchagency/poetry-install
+      - uses: actions/setup-python@v1
+      - name: Install dependencies
+        run: |
+          pip install -U pip
+          pip install poetry
+          poetry install
+        env:
+          POETRY_VIRTUALENVS_CREATE: false
+  release:
+    name: Release
+    if: ${{ inputs.do_release }}
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@latest
+        with:
+          fetch-depth: 0
+      # From: https://github.com/knowsuchagency/poetry-install
+      - uses: actions/setup-python@v1
+      - name: Install dependencies
+        run: |
+          pip install -U pip
+          pip install poetry
+          poetry install
+        env:
+          POETRY_VIRTUALENVS_CREATE: false
+      - uses: actions/setup-node@v3
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
