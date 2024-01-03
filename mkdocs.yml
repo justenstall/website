@@ -4,8 +4,7 @@ site_description: |
   Justen Stall's portfolio and blog.
 site_author: Justen Stall
 site_url: https://justenstall.com
-repo_name: justenstall/justenstall.github.io
-edit_uri: ""
+repo_url: https://github.com/justenstall/justenstall.github.io
 copyright: Copyright © 2023 Justen Stall
 
 theme:
