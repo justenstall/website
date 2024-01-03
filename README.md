@@ -16,7 +16,22 @@ My portfolio and blog website.
 
 ## Testing
 
-To test the site locally, install the dependencies using [Poetry] and run the .
+The site can be tested locally using `mkdocs serve` once Python dependencies are installed.
+
+```sh
+# Install Python dependencies
+poetry install --no-root
+
+# Serve the site locally
+poetry run mkdocs serve
+```
+
+The "serve" task can automatically perform these steps.
+
+```sh
+# Run the "serve" task
+task serve
+```
 
 ## Deploying
 

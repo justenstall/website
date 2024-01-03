@@ -5,11 +5,12 @@ version: "3"
 tasks:
   poetry:
     silent: true
-    # internal: true
+    internal: true
     cmds:
-      - command -v poetry
+      - command -v poetry > /dev/null
 
   install-deps:
+    silent: true
     deps:
       - poetry
     cmds:
