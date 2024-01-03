@@ -1,0 +1,34 @@
+/* .portfolio-entry {} */
+
+.portfolio-entry-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.portfolio-entry-content .image {
+  height: 2rem;
+  flex-shrink: 0;
+}
+
+.portfolio-entry-content .narrow-image {
+  height: 4rem;
+  flex-shrink: 0;
+}
+
+.portfolio-entry-content .description {
+  align-self: flex-start;
+  flex-grow: 2;
+}
+
+@media screen and (min-width: 60em) {
+  .portfolio-entry-content {
+    flex-direction: row;
+  }
+
+  .portfolio-entry-content .description {
+    max-width: 70%;
+  }
+}

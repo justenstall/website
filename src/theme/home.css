@@ -1,0 +1,130 @@
+/*
+  Styles for home.html
+*/
+
+.md-main {
+  display: none;
+}
+
+.md-header--shadow {
+  box-shadow: none;
+}
+
+.container-hero {
+  padding-top: 0rem;
+  background: linear-gradient(
+    to bottom,
+    var(--md-primary-fg-color),
+    var(--md-primary-fg-color--light) 99%
+  );
+  flex-grow: 2;
+}
+
+.tx-hero {
+  margin: 32px 2.8rem;
+  color: var(--md-primary-bg-color);
+  justify-content: center;
+}
+
+.tx-hero h1 {
+  margin-bottom: 1rem;
+  color: currentColor;
+  font-weight: 700;
+}
+
+.tx-hero__content {
+  padding-bottom: 1rem;
+  margin: 0 auto;
+}
+
+.tx-hero__image {
+  width: 100%;
+  max-width: 15rem;
+  order: 1;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.tx-hero .md-button {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  color: var(--md-primary-bg-color);
+  border-color: transparent;
+}
+
+.tx-hero .md-button--primary {
+  background-color: var(--md-primary-bg-color);
+  color: hsl(0, 2%, 19%);
+  padding: 5px 10px;
+  border-color: var(--md-primary-bg-color);
+}
+
+.tx-hero .md-button .twemoji {
+  padding-right: 3px;
+}
+
+.tx-hero .md-button:focus,
+.tx-hero .md-button:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+@media screen and (min-width: 60em) {
+  .tx-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tx-hero__content {
+    max-width: 22rem;
+    margin: 3.5rem 4rem 3.5rem 1rem;
+    align-items: center;
+  }
+
+  .md-sidebar--primary {
+    display: none;
+  }
+}
+
+/*
+	Zig Zag Underline
+*/
+
+.zigzag {
+  display: inline-block;
+  position: relative;
+}
+
+.zigzag:after {
+  content: "";
+  height: 0.2em;
+  width: 100%;
+  position: absolute;
+  background: url("zigzag-black.svg");
+  background-size: 0.35em;
+  bottom: 0;
+  left: 0;
+  animation: zigzagPlay 1.5s infinite linear;
+  animation-play-state: paused;
+}
+
+.zigzag:hover:after {
+  animation-play-state: running;
+}
+
+@keyframes zigzagPlay {
+  0% { background-position: 0rem; }
+  100% { background-position: -1.7rem; }
+}
+
+.zigzag-play:after {
+  animation-play-state: running !important;
+}
+
+.zigzag-title:after {
+  top: 2rem;
+}
