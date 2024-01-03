@@ -15,7 +15,7 @@ theme:
   font:
     text: Inter
     code: DM Mono
-  custom_dir: docs/theme
+  custom_dir: src/theme
   features:
     - content.code.copy
     - navigation.sections
@@ -32,8 +32,6 @@ extra:
       link: https://github.com/justenstall
     - icon: fontawesome/brands/slack
       link: https://cloud-native.slack.com/team/U026HE0JFEJ
-    - icon: fontawesome/brands/git-alt
-      link: https://github.com/justenstall/justenstall.github.io
   home:
     image: assets/justenstall.jpg
     description: |
@@ -41,8 +39,9 @@ extra:
 
 extra_css:
   - stylesheets/theme-colors.css
+  - stylesheets/portfolio.css
 
-docs_dir: docs
+docs_dir: src
 
 plugins:
   - blog:

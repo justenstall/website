@@ -3,10 +3,24 @@
 version: "3"
 
 tasks:
+  poetry:
+    silent: true
+    # internal: true
+    cmds:
+      - command -v poetry
+
+  install-deps:
+    deps:
+      - poetry
+    cmds:
+      - poetry install --no-root
+
   serve:
+    deps: [install-deps]
     cmds:
       - poetry run mkdocs serve
 
   build:
+    deps: [install-deps]
     cmds:
       - poetry run mkdocs build
