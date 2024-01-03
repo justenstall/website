@@ -1,3 +1,31 @@
 {
-	
+  "branches": [
+    "main",
+    {
+      "name": "preview",
+      "channel": "preview",
+      "prerelease": true
+    }
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "./release.sh ${nextRelease.version}"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md",
+          "VERSION"
+        ],
+        "message": "chore(release): ${nextRelease.version}  \n\n${nextRelease.notes}"
+      }
+    ]
+  ]
 }

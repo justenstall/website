@@ -12,6 +12,27 @@ theme:
   logo: assets/favicon-t-white-black.png
   favicon: assets/favicon-fullres.png
   language: en
+  palette:
+    scheme: jstall
+    # # Palette toggle for automatic mode
+    # - media: "(prefers-color-scheme)"
+    #   toggle:
+    #     icon: material/earth
+    #     name: Switch to light mode
+
+    # # Palette toggle for light mode
+    # - media: "(prefers-color-scheme: light)"
+    #   scheme: jstall
+    #   toggle:
+    #     icon: material/weather-sunny
+    #     name: Switch to dark mode
+
+    # # Palette toggle for dark mode
+    # - media: "(prefers-color-scheme: dark)"
+    #   scheme: slate
+    #   toggle:
+    #     icon: material/weather-night
+    #     name: Switch to system preference
   font:
     text: Inter
     code: DM Mono
@@ -38,7 +59,7 @@ extra:
       Data Science Engineer at the University of Dayton Research Institute.
 
 extra_css:
-  - stylesheets/theme-colors.css
+  - stylesheets/colors.css
   - stylesheets/portfolio.css
 
 docs_dir: src

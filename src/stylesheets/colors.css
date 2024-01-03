@@ -1,0 +1,39 @@
+:root {
+  --light-color: #00d2ff;
+  --med-color: #006eff;
+  --dark-color: #003aea;
+  --single-color: #019eff;
+  --transparent: rgba(0, 0, 0, 0);
+  --glass: rgba(0, 0, 0, 0.65);
+  --dark-glass: rgba(0, 0, 0, 0.65);
+  --light-glass: rgba(255, 255, 255, 0.8);
+  --gradient-new: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+}
+
+[data-md-color-scheme="jstall"] {
+  /* Primary color shades */
+  --md-primary-fg-color: var(--dark-color);
+  --md-primary-fg-color--light: var(--light-color);
+  --md-primary-fg-color--dark: var(--dark-color);
+  --md-primary-bg-color: hsla(0, 0%, 100%, 1);
+  --md-primary-bg-color--light: hsla(0, 0%, 100%, 0.7);
+
+  /* Accent color shades */
+  --md-accent-fg-color: var(--light-color);
+  --md-accent-fg-color--transparent: hsla(0, 0%, 100%, 0.8);
+  --md-accent-bg-color: hsla(0, 0%, 100%, 1);
+  --md-accent-bg-color--light: hsla(0, 0%, 100%, 0.7);
+}
+
+[data-md-color-scheme="slate"] {
+  /* Tune the slate theme to use same hue as default theme */
+  --md-hue: 225;
+}
+
+.vertical-center {
+  vertical-align: center;
+}
+
+.md-header__option .md-header__button svg {
+  height: 1rem;
+}
