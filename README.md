@@ -1,4 +1,4 @@
-# Justen Stall's Website
+# Website
 
 My portfolio and blog website.
 
