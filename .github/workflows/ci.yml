@@ -62,19 +62,7 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - uses: actions/configure-pages@v4
-      - name: Download the build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site
-          path: site/
-      - name: Convert and upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site/
-      - name: Deploy site to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: ./.github/workflows/deploy.yml
   release:
     name: Release
     needs: build
