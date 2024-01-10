@@ -88,6 +88,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+      - name: Install poetry # Needed for updating version in pyproject.toml
+        run: pipx install poetry==1.7.1
       - name: List semantic release plugins
         id: listPlugins
         uses: mikefarah/yq@master

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "justenstall-website"
-version = "0.0.1"
+version = "0.0.0"
 description = "Justen Stall's portfolio and blog."
 authors = ["Justen Stall <justenstall@gmail.com>"]
 readme = "README.md"
