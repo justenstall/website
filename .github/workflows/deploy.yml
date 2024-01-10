@@ -28,7 +28,7 @@ jobs:
       - name: Download the build artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ inputs.artifact_name }}
+          name: site
           path: site/
       - name: Convert and upload Pages artifact
         uses: actions/upload-pages-artifact@v3

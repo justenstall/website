@@ -48,6 +48,19 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/deploy.yml
+  # deploy-preview:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Install and Build
+  #       if: github.event.action != 'closed' # You might want to skip the build if the PR has been closed
+  #       run: |
+  #         npm install
+  #         npm run build
+
+  #     - name: Deploy preview
+  #       uses: rossjrw/pr-preview-action@v1
+  #       with:
+  #         source-dir: ./build/
   release:
     name: Release
     needs: build
