@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       do_release:
-        description: "Create a release job?"
+        description: "Create a release?"
         default: false
         type: boolean
 
