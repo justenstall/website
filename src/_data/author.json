@@ -1,11 +1,11 @@
 {
-  "name": "John Doe",
-  "shortName": "JD",
-  "org": "John Doe Inc.",
+  "name": "Justen Stall",
+  "shortName": "JS",
+  "org": "University of Dayton Research Institute",
   "image": "/assets/images/avatar.png",
   "title": "Software Engineer",
-  "currentFocus": "Full Stack Development",
-  "location": "Frankfurt, Germany",
+  "currentFocus": "App Development",
+  "location": "Dayton, OH",
   "email": "myemail@myemail.ext",
   "address": {
     "streetAddress": "Demo street 1",
