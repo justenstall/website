@@ -58,7 +58,7 @@ jobs:
           retention-days: 7
   # Single deploy job since we're just deploying
   deploy:
-    if: ${{ github.ref == github.event.repository.default_branch }}
+    if: ${{ github.ref_name == github.event.repository.default_branch }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
