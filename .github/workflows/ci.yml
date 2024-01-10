@@ -62,8 +62,7 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - uses: actions/configure-pages@v4
       - name: Download the build artifact
         uses: actions/download-artifact@v4
         with:
@@ -73,7 +72,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: site/
-      - name: Deploy to GitHub Pages
+      - name: Deploy site to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
   release:
@@ -87,11 +86,16 @@ jobs:
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - name: Release
+      - name: List semantic release plugins
+        id: listPlugins
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq '[ .plugins[] | .[0] // . ] | join(" ")' .releaserc
+      - name: Install Semantic Release plugins
+        run: npm install -g ${{ steps.listPlugins.outputs.result }}
+      - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
