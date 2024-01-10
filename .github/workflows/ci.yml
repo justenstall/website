@@ -16,7 +16,7 @@ concurrency: ci-${{ github.ref }}
 
 jobs:
   build:
-    name: Build site
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -48,7 +48,7 @@ jobs:
           path: site/
           retention-days: 7
   deploy:
-    name: Deploy site to GitHub Pages
+    name: Deploy
     if: ${{ github.ref_name == github.event.repository.default_branch }}
     environment:
       name: github-pages
