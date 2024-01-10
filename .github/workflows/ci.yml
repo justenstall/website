@@ -12,6 +12,8 @@ on:
         default: false
         type: boolean
 
+concurrency: ci-${{ github.ref }}
+
 jobs:
   build:
     name: Build site
@@ -46,11 +48,12 @@ jobs:
           path: site/
           retention-days: 7
   deploy:
-    needs: build
     name: Deploy site to GitHub Pages
+    if: ${{ github.ref_name == github.event.repository.default_branch }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -73,8 +76,8 @@ jobs:
       - name: Deploy site to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          preview: ${{ github.ref_name != github.event.repository.default_branch }}
+        # with:
+        #   preview: ${{ github.ref_name != github.event.repository.default_branch }}
       - name: Updating PR with link to preview deployment
         if: ${{ github.ref_name != github.event.repository.default_branch }}
         uses: marocchino/sticky-pull-request-comment@v2
@@ -84,7 +87,7 @@ jobs:
           hide_classify: "OUTDATED"
   release:
     name: Release
-    needs: build
+    needs: deploy
     if: ${{ inputs.do_release }}
     runs-on: ubuntu-latest
     permissions:
