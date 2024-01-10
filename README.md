@@ -20,3 +20,5 @@ My portfolio and blog website, [justenstall.com](https://justenstall.com).
   <img alt="Built with 11ty-resume-template"
     src="https://img.shields.io/badge/11ty--resume--template-black?logo=eleventy"/>
 </a> -->
+
+<!-- // "eleventy-plugin-typeset": "github:arcades-studio/eleventy-plugin-typeset-again", -->

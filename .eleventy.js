@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
     "./src/site.webmanifest": "site.webmanifest",
   });
 
+
   return {
     dir: {
       input: "src",
