@@ -21,6 +21,7 @@ jobs:
       contents: read
       pages: write
       id-token: write
+      pull-requests: write # to leave comment on PR
     outputs:
       page_url: ${{ steps.deployment.outputs.page_url }}
     steps:
@@ -39,16 +40,23 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           preview: ${{ github.ref_name != github.event.repository.default_branch }}
-  comment:
-    name: Leave a comment on PR after preview deployment
-    if: ${{ github.ref_name != github.event.repository.default_branch }}
-    needs: deploy
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write # required
-    steps:
-      - uses: marocchino/sticky-pull-request-comment@v2
+      - name: Updating PR with link to preview deployment
+        if: ${{ github.ref_name != github.event.repository.default_branch }}
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          message: "Deployed a preview of ${{ github.sha }} to <${{ jobs.deploy.outputs.page_url }}>"
+          message: "Deployed a preview of ${{ github.sha }} to <${{ steps.deployment.outputs.page_url }}>"
           hide_and_recreate: true
           hide_classify: "OUTDATED"
+  # comment:
+  #   name: Leave a comment on PR after preview deployment
+  #   if: ${{ github.ref_name != github.event.repository.default_branch }}
+  #   needs: deploy
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pull-requests: write # required
+  #   steps:
+  #     - uses: marocchino/sticky-pull-request-comment@v2
+  #       with:
+  #         message: "Deployed a preview of ${{ github.sha }} to <${{ jobs.deploy.outputs.page_url }}>"
+  #         hide_and_recreate: true
+  #         hide_classify: "OUTDATED"
