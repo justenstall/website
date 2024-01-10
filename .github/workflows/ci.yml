@@ -29,6 +29,10 @@ on:
 
 concurrency: ci-${{ github.ref_name }}
 
+env:
+  # Name of the build artifact
+  build_artifact: "site"
+
 jobs:
   build:
     name: Build
@@ -57,17 +61,22 @@ jobs:
       - name: Build site with MkDocs
         run: poetry run mkdocs build
       - name: Upload build artifact
+        id: upload
         uses: actions/upload-artifact@v4
         with:
-          name: site
+          name: ${{ env.build_artifact }}
           path: site/
-          retention-days: 7
+          retention-days: 1
   deploy:
     name: Deploy
     if: ${{ github.ref_name == github.event.repository.default_branch }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      # directory that artifact is downloaded to
+      # and deployed from
+      workdir: "site"
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -82,12 +91,12 @@ jobs:
       - name: Download the build artifact
         uses: actions/download-artifact@v4
         with:
-          name: site
-          path: site/
+          name: ${{ env.build_artifact }}
+          path: ${{ env.workdir }}
       - name: Convert and upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/
+          path: ${{ env.workdir }}
       - name: Deploy site to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
