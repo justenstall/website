@@ -1,22 +1,28 @@
 name: CI
 
-.watch_paths:
-  # mkdocs source
-  - "src/**"
-  - "mkdocs.yml"
-  # poetry source
-  - "pyproject.toml"
-  - "poetry.lock"
-  # run updated workflows
-  - ".github/workflows/**"
-
 on:
   push:
     branches:
       - main
-    paths: !reference [.watch_paths]
+    paths:
+      # mkdocs source
+      - "src/**"
+      - "mkdocs.yml"
+      # poetry source
+      - "pyproject.toml"
+      - "poetry.lock"
+      # run updated workflows
+      - ".github/workflows/**"
   pull_request:
-    paths: !reference [.watch_paths]
+    paths:
+      # mkdocs source
+      - "src/**"
+      - "mkdocs.yml"
+      # poetry source
+      - "pyproject.toml"
+      - "poetry.lock"
+      # run updated workflows
+      - ".github/workflows/**"
   workflow_dispatch:
     inputs:
       do_release:
