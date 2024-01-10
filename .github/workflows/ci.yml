@@ -58,11 +58,10 @@ jobs:
       pages: write
       id-token: write
     steps:
-      # checkout the required workflow file
+      # checkout the workflow files
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: .github/workflows/deploy.yml
-          sparse-checkout-cone-mode: false # fetch a single file
+          sparse-checkout: .github
       - uses: ./.github/workflows/deploy.yml
   release:
     name: Release
