@@ -1,2 +1,8 @@
+node_modules
+
+# MkDocs/Material for MkDocs
 site
 .cache
+
+# 11ty
+_site
