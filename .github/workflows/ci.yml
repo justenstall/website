@@ -17,8 +17,7 @@ jobs:
     name: Build site
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           lfs: true # images are stored with LFS
       # From: https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#caching-packages
@@ -59,6 +58,11 @@ jobs:
       pages: write
       id-token: write
     steps:
+      # checkout the required workflow file
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/workflows/deploy.yml
+          sparse-checkout-cone-mode: false # fetch a single file
       - uses: ./.github/workflows/deploy.yml
   release:
     name: Release
