@@ -33,9 +33,15 @@ task serve
 
 ## Deploying
 
-The site is deployed to a CloudFlare-managed domain using [CloudFlare Pages]. The guide [Deploy an MkDocs site to CloudFlare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/) was useful for setting this deployment up.
+<!-- The site is deployed to a CloudFlare-managed domain using [CloudFlare Pages](https://developers.cloudflare.com/pages/). The guide [Deploy an MkDocs site to CloudFlare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/) was useful for setting this deployment up. -->
+
+- The site is deployed to [GitHub Pages] using [GitHub Actions]
+- The custom domain "justenstall.com" is managed by CloudFlare
+
+To trigger a deployment
 
 [MkDocs]: <https://www.mkdocs.org/> "MkDocs"
 [Material for MkDocs]: <https://squidfunk.github.io/mkdocs-material/> "Material for MkDocs"
 [Poetry]: <https://python-poetry.org/> "Poetry"
-[CloudFlare Pages]: <https://developers.cloudflare.com/pages/> "CloudFlare Pages"
+[GitHub Pages]: <https://docs.github.com/en/pages> "GitHub Pages"
+[GitHub Actions]: <https://docs.github.com/en/actions> "GitHub Actions"
