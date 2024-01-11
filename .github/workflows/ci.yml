@@ -68,7 +68,9 @@ jobs:
   ############################################################
   release:
     needs: deploy
-    if: ${{ inputs.do_release }}
+    # Release when requested and on scheduled workflows
+    # This guarantees dependency upgrades get deployed at least once a week
+    if: ${{ inputs.do_release || github.event == 'schedule' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write # to be able to publish a GitHub release
