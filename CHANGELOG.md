@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/justenstall/website/compare/v1.0.0...v1.0.1) (2024-01-11)
+
+
+### Bug Fixes
+
+* add github release creation to semantic release ([fb3f698](https://github.com/justenstall/website/commit/fb3f698ba0c1f060fb04b576d08840c4653948ec))
+
 # 1.0.0 (2024-01-11)
 
 
