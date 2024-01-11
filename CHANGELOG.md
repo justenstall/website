@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/justenstall/website/compare/v1.0.1...v1.0.2) (2024-01-11)
+
+
+### Bug Fixes
+
+* merge workflows to improve actions UI ([5d27bac](https://github.com/justenstall/website/commit/5d27bac0c4efe129c418050d31d1061cc3c2ab83))
+
 ## [1.0.1](https://github.com/justenstall/website/compare/v1.0.0...v1.0.1) (2024-01-11)
 
 
