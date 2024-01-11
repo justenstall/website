@@ -34,6 +34,9 @@ env:
   build_artifact: "site"
 
 jobs:
+  ############################################################
+  # Lints Markdown files
+  ############################################################
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -42,6 +45,10 @@ jobs:
       - uses: xt0rted/markdownlint-problem-matcher@v2
       - uses: DavidAnson/markdownlint-cli2-action@v14
         continue-on-error: true
+
+  ############################################################
+  # Build the site with MkDocs
+  ############################################################
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -75,6 +82,10 @@ jobs:
           name: ${{ env.build_artifact }}
           path: site/
           retention-days: 1
+
+  ############################################################
+  # Deploys the site to GitHub Pages
+  ############################################################
   deploy:
     name: Deploy
     if: ${{ github.ref_name == github.event.repository.default_branch }}
@@ -108,6 +119,10 @@ jobs:
       - name: Deploy site to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  ############################################################
+  # Triggers a release with Semantic Release
+  ############################################################
   release:
     name: Release
     needs: deploy
@@ -134,3 +149,35 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+
+  ############################################################
+  # Analyze code with CodeQL
+  ############################################################
+  analyze:
+    name: Analyze
+    needs: build
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        # https://aka.ms/codeql-docs/language-support
+        language: [javascript-typescript]
+    steps:
+      - name: Download the build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.build_artifact }}
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          # https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/customizing-your-advanced-setup-for-code-scanning#using-queries-in-ql-packs
+          languages: ${{ matrix.language }}
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"
