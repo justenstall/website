@@ -8,9 +8,9 @@ My portfolio and blog website, [justenstall.com](https://justenstall.com).
   <img alt="GitHub Pages"
     src="https://img.shields.io/badge/justenstall.com-blue?logo=github&label=pages&labelColor=181717"/>
 </a>
-<a href="https://github.com/justenstall/website/actions?query=workflow%3ABuild+branch%3Amain">
+<a href="https://github.com/justenstall/website/actions/workflows/ci.yml?query=branch%3Amain">
   <img alt="Build Status"
-    src="https://img.shields.io/github/actions/workflow/status/justenstall/website/build.yml?logo=github&labelColor=181717"/>
+    src="https://img.shields.io/github/actions/workflow/status/justenstall/website/ci.yml?logo=github&labelColor=181717"/>
 </a>
 <a href="https://www.11ty.dev/">
   <img alt="Built with 11ty"
