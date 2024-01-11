@@ -5,20 +5,21 @@ on:
     branches:
       - main
     paths:
-      # mkdocs source
       - "src/**"
-      - "mkdocs.yml"
-      # poetry source
-      - "pyproject.toml"
-      - "poetry.lock"
-      # run updated workflows
+      - "package.json"
+      - "package-lock.json"
+      - "tailwind.config.js"
+      - "postcss.config.js"
+      - ".eleventy.js"
       - ".github/workflows/**"
   pull_request:
     paths:
       - "src/**"
-      - "mkdocs.yml"
-      - "pyproject.toml"
-      - "poetry.lock"
+      - "package.json"
+      - "package-lock.json"
+      - "tailwind.config.js"
+      - "postcss.config.js"
+      - ".eleventy.js"
       - ".github/workflows/**"
   workflow_dispatch:
     inputs:
@@ -134,17 +135,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - name: Install poetry # Needed for updating version in pyproject.toml
-        run: pipx install poetry==1.7.1
-      - name: List semantic release plugins
-        id: listPlugins
-        uses: mikefarah/yq@master
         with:
-          cmd: yq '[ .plugins[] | .[0] // . ] | join(" ")' .releaserc
-      - name: Install Semantic Release
-        run: npm install -g semantic-release
-      - name: Install Semantic Release plugins
-        run: npm install -g ${{ steps.listPlugins.outputs.result }}
+          node-version-file: package.json
+          cache: "npm"
+      - name: Install node dependencies
+        run: npm install
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -170,7 +165,6 @@ jobs:
         # https://aka.ms/codeql-docs/language-support
         language: [javascript-typescript]
     steps:
-      - uses: actions/checkout@v4
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
