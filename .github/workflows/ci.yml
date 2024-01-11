@@ -39,7 +39,6 @@ jobs:
   # Lints Markdown files
   ############################################################
   lint:
-    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -68,7 +67,6 @@ jobs:
   # Triggers a release with Semantic Release
   ############################################################
   release:
-    name: Release
     needs: deploy
     if: ${{ inputs.do_release }}
     runs-on: ubuntu-latest
