@@ -1,3 +1,17 @@
+# 1.0.0 (2024-01-11)
+
+
+### Bug Fixes
+
+* enable eslint with eslintrc ([0c97d21](https://github.com/justenstall/website/commit/0c97d21aaf8561f5241cf42434df9c0007191bd3))
+* **python version:** demote python to 3.11 to enable dependabot ([a824edc](https://github.com/justenstall/website/commit/a824edc6b84c068af5dce71d805f7d9e92a110d1))
+
+
+### Features
+
+* add semantic release job ([888aa62](https://github.com/justenstall/website/commit/888aa62662399783fec6702b536af63967aa9750))
+* update work experience, remove some old stuff, delete some old code that I was scared to delete before I was a git wizard ([e97b854](https://github.com/justenstall/website/commit/e97b854eae609ccc5171f5d209424fde3c7f0334))
+
 ## Archive (pre-2019)
 
 ### WORK IN PROGRESS:
