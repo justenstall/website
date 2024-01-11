@@ -26,12 +26,13 @@ on:
         description: "Create a release?"
         default: false
         type: boolean
+  # Run the workflow every Monday at 8am
+  schedule:
+    - "0 8 * * 1"
 
-concurrency: ci-${{ github.ref_name }}
-
-# env:
-#   # Name of the build artifact
-#   build_artifact: "site"
+concurrency:
+  group: ci-${{ github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
   ############################################################
@@ -99,5 +100,7 @@ jobs:
   analyze:
     needs: build
     uses: ./.github/workflows/codeql.yml
+    # Only run this job on scheduled workflows (it takes a while)
+    if: ${{ github.event == 'schedule' }}
     with:
       artifact: site
