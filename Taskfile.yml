@@ -25,3 +25,7 @@ tasks:
     deps: [install-deps]
     cmds:
       - poetry run mkdocs build
+
+  lint:
+    cmds:
+      - markdownlint-cli2
