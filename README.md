@@ -2,7 +2,7 @@
 
 My portfolio and blog website, [justenstall.com](https://justenstall.com).
 
-----
+---
 
 <a href="https://justenstall.com">
   <img alt="GitHub Pages"
@@ -12,7 +12,13 @@ My portfolio and blog website, [justenstall.com](https://justenstall.com).
   <img alt="Build Status"
     src="https://img.shields.io/github/actions/workflow/status/justenstall/website/ci.yml?logo=github&labelColor=181717"/>
 </a>
-<a href="https://squidfunk.github.io/mkdocs-material/">
-  <img alt="Built with Material for MkDocs"
-    src="https://img.shields.io/badge/Material_for_MkDocs-526CFE?logo=MaterialForMkDocs&logoColor=white"/>
+<a href="https://www.11ty.dev/">
+  <img alt="Built with 11ty"
+    src="https://img.shields.io/badge/built_with_11ty-black?logo=eleventy"/>
 </a>
+<!-- <a href="https://github.com/learnwithgurpreet/11ty-resume-template">
+  <img alt="Built with 11ty-resume-template"
+    src="https://img.shields.io/badge/11ty--resume--template-black?logo=eleventy"/>
+</a> -->
+
+<!-- // "eleventy-plugin-typeset": "github:arcades-studio/eleventy-plugin-typeset-again", -->

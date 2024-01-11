@@ -1,47 +1,26 @@
 # Contributing
 
+## Getting Started
+
+To install the necessary packages, run this command in the root folder of the site:
+
+```sh
+npm install
+```
+
+### Commands
+
+- Run `npm start` for a development server and live reloading
+- Run `npm run build` to generate a production build
+
 ## Developing
 
-- The site is maintained as an [MkDocs] website using the [Material for MkDocs] theme
-  - See [`mkdocs.yml`](./mkdocs.yml)
-- The site source is contained in the [`src/`](./src/) directory
-  - This is configured in [`mkdocs.yml`](./mkdocs.yml)
-  - Differed from the default (`docs/`) to reflect that this site is not documentation
-- Dependencies are managed using [Poetry] for Python
-  - See [`pyproject.toml`](./pyproject.toml)
-- Common tasks are defined using [Taskfile](https://taskfile.dev/)
-  - See [`Taskfile.yml`](./Taskfile.yml)
+### Theme
 
-## Testing
+This site uses the [11ty-resume-template](https://github.com/learnwithgurpreet/11ty-resume-template) theme for 11ty. View the Theme Customization resource for information on how to customize the theme:
 
-The site can be tested locally using `mkdocs serve` once Python dependencies are installed.
-
-```sh
-# Install Python dependencies
-poetry install --no-root
-
-# Serve the site locally
-poetry run mkdocs serve
-```
-
-The "serve" task can automatically perform these steps.
-
-```sh
-# Run the "serve" task
-task serve
-```
+- [Theme Customization](./docs/theme.md)
 
 ## Deploying
 
-<!-- The site is deployed to a CloudFlare-managed domain using [CloudFlare Pages](https://developers.cloudflare.com/pages/). The guide [Deploy an MkDocs site to CloudFlare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/) was useful for setting this deployment up. -->
-
-- The site is deployed to [GitHub Pages] using [GitHub Actions]
-- The custom domain "justenstall.com" is managed by CloudFlare
-
-To trigger a deployment
-
-[MkDocs]: <https://www.mkdocs.org/> "MkDocs"
-[Material for MkDocs]: <https://squidfunk.github.io/mkdocs-material/> "Material for MkDocs"
-[Poetry]: <https://python-poetry.org/> "Poetry"
-[GitHub Pages]: <https://docs.github.com/en/pages> "GitHub Pages"
-[GitHub Actions]: <https://docs.github.com/en/actions> "GitHub Actions"
+The site is deployed to GitHub Pages by a GitHub Actions Workflow.
