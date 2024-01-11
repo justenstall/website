@@ -87,12 +87,14 @@ jobs:
         uses: mikefarah/yq@master
         with:
           cmd: yq '[ .plugins[] | .[0] // . ] | join(" ")' .releaserc
+      - name: Install Semantic Release
+        run: npm install -g semantic-release
       - name: Install Semantic Release plugins
         run: npm install -g ${{ steps.listPlugins.outputs.result }}
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: semantic-release
 
   ############################################################
   # Analyze code with CodeQL
