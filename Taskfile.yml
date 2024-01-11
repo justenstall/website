@@ -28,4 +28,4 @@ tasks:
 
   lint:
     cmds:
-      - markdownlint-cli2
+      - npx markdownlint-cli2
