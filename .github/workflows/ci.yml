@@ -30,9 +30,7 @@ on:
   schedule:
     - "0 8 * * 1"
 
-concurrency:
-  group: ci-${{ github.ref_name }}
-  cancel-in-progress: true
+concurrency: ci-${{ github.ref_name }}
 
 jobs:
   ############################################################
