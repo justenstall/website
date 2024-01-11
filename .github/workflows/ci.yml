@@ -29,9 +29,9 @@ on:
 
 concurrency: ci-${{ github.ref_name }}
 
-env:
-  # Name of the build artifact
-  build_artifact: "site"
+# env:
+#   # Name of the build artifact
+#   build_artifact: "site"
 
 jobs:
   ############################################################
@@ -52,7 +52,7 @@ jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      artifact: ${{ env.build_artifact }}
+      artifact: site
 
   ############################################################
   # Deploys the site to GitHub Pages
@@ -61,7 +61,7 @@ jobs:
     needs: build
     uses: ./.github/workflows/deploy.yml
     with:
-      artifact: ${{ env.build_artifact }}
+      artifact: site
 
   ############################################################
   # Triggers a release with Semantic Release
@@ -100,4 +100,4 @@ jobs:
     needs: build
     uses: ./.github/workflows/codeql.yml
     with:
-      artifact: ${{ env.build_artifact }}
+      artifact: site
