@@ -5,20 +5,13 @@ on:
     branches:
       - main
     paths:
-      # mkdocs source
-      - "src/**"
-      - "mkdocs.yml"
-      # poetry source
-      - "pyproject.toml"
-      - "poetry.lock"
-      # run updated workflows
+      - "theme/**"
+      - "config.toml"
       - ".github/workflows/**"
   pull_request:
     paths:
-      - "src/**"
-      - "mkdocs.yml"
-      - "pyproject.toml"
-      - "poetry.lock"
+      - "theme/**"
+      - "config.toml"
       - ".github/workflows/**"
   workflow_dispatch:
     inputs:
@@ -58,25 +51,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: true # images are stored with LFS
-      # From: https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#caching-packages
-      - name: Install poetry
-        run: pipx install poetry==1.7.1
-      - uses: actions/setup-python@v5
-        with:
-          python-version-file: .python-version
-          cache: poetry
-      # Install with --no-root because project does produce a python package
-      - run: poetry install --no-root
-      # From: https://github.com/squidfunk/mkdocs-material/blob/master/docs/publishing-your-site.md#with-github-actions
-      - name: Setup MkDocs cache
-        uses: actions/cache@v3
-        with:
-          key: mkdocs-material-${{ github.run_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-      - name: Build site with MkDocs
-        run: poetry run mkdocs build
+      - name: Build only
+        uses: shalzz/zola-deploy-action@v0.18.0
+        env:
+          OUT_DIR: site
+          BUILD_ONLY: true
       - name: Upload build artifact
         id: upload
         uses: actions/upload-artifact@v4
@@ -138,8 +117,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - name: Install poetry # Needed for updating version in pyproject.toml
-        run: pipx install poetry==1.7.1
       - name: List semantic release plugins
         id: listPlugins
         uses: mikefarah/yq@master
