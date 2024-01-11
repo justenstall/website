@@ -28,9 +28,11 @@ on:
         type: boolean
   # Run the workflow every Monday at 8am
   schedule:
-    - "0 8 * * 1"
+    - cron: "0 8 * * 1"
 
-concurrency: ci-${{ github.ref_name }}
+concurrency:
+  group: ci-${{ github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
   ############################################################
