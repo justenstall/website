@@ -69,7 +69,7 @@ jobs:
       - run: poetry install --no-root
       # From: https://github.com/squidfunk/mkdocs-material/blob/master/docs/publishing-your-site.md#with-github-actions
       - name: Setup MkDocs cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           key: mkdocs-material-${{ github.run_id }}
           path: .cache
