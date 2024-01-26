@@ -1,4 +1,6 @@
-# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+############################################################
+# Site metadata
+############################################################
 site_name: Justen Stall
 site_description: |
   Justen Stall's portfolio and blog.
@@ -7,15 +9,20 @@ site_url: https://justenstall.com
 repo_url: https://github.com/justenstall/website
 copyright: Copyright © 2023 Justen Stall
 
+docs_dir: src
+extra_css:
+  - stylesheets/colors.css
+  - stylesheets/portfolio.css
+
+############################################################
+# Theme configuration
+############################################################
 theme:
   name: material
   logo: assets/favicon-t-white-black.png
   favicon: assets/favicon-fullres.png
   language: en
   palette:
-    # scheme: jstall
-    # primary: custom
-    # accent: custom
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
       primary: custom
@@ -23,7 +30,6 @@ theme:
       toggle:
         icon: material/earth
         name: Switch to light mode
-
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       primary: custom
@@ -31,7 +37,6 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
-
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
@@ -46,11 +51,47 @@ theme:
   custom_dir: src/theme
   features:
     - content.code.copy
+    - navigation.instant
+    - navigation.tabs
     - navigation.sections
     - navigation.top
-    - navigation.tabs
     - navigation.indexes
 
+############################################################
+# Markdown syntax extensions
+############################################################
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.snippets
+  - attr_list
+  - md_in_html
+  - mdx_truly_sane_lists # support normal md indentation
+
+############################################################
+# MkDocs plugins
+############################################################
+plugins:
+  - blog:
+      draft_if_future_date: true
+      categories_allowed:
+        - General
+  - social
+  - minify:
+      minify_html: true
+      htmlmin_opts:
+        remove_comments: true
+
+############################################################
+# Extra data for plugins
+############################################################
 extra:
   generator: false
   social:
@@ -64,34 +105,3 @@ extra:
     image: assets/justenstall.jpg
     description: |
       Data Science Engineer at the University of Dayton Research Institute.
-
-extra_css:
-  - stylesheets/colors.css
-  - stylesheets/portfolio.css
-
-docs_dir: src
-
-plugins:
-  - blog:
-      draft_if_future_date: true
-      categories_allowed:
-        - General
-  - social
-
-markdown_extensions:
-  - attr_list
-  - md_in_html
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
