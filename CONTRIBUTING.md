@@ -45,3 +45,13 @@ To trigger a deployment
 [Poetry]: <https://python-poetry.org/> "Poetry"
 [GitHub Pages]: <https://docs.github.com/en/pages> "GitHub Pages"
 [GitHub Actions]: <https://docs.github.com/en/actions> "GitHub Actions"
+
+## Troubleshooting
+
+- macOS systems can show error for a missing "cairo" library, with various names. `brew install cairo` should resolve the errors.
+
+The repository uses Git LFS for image storage, if you have not installed and set up Git LFS before cloning the repository, the images will download incorrectly.
+
+> The easiest way to resolve it is to delete the clone and re-clone the project.
+>
+> There is an open issue for a more elegant solution from Git LFS: [git-lfs/issues/325](https://github.com/git-lfs/git-lfs/issues/325)
