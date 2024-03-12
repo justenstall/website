@@ -7,7 +7,7 @@ site_description: |
 site_author: Justen Stall
 site_url: https://justenstall.com
 repo_url: https://github.com/justenstall/website
-copyright: Copyright © 2023 Justen Stall
+copyright: Copyright © 2024 Justen Stall
 
 docs_dir: src
 extra_css:

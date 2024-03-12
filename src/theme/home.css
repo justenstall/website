@@ -2,8 +2,17 @@
   Styles for home.html
 */
 
-.md-main {
-  display: none;
+.md-container {
+  background: linear-gradient(
+    to bottom,
+    var(--md-primary-fg-color),
+    var(--md-primary-fg-color--light) 99%
+  );
+}
+
+/* Sets background of tab strip in header so the gradient can start above the tabs */
+.md-tabs {
+  background: none;
 }
 
 .md-header--shadow {
@@ -12,11 +21,6 @@
 
 .container-hero {
   padding-top: 0rem;
-  background: linear-gradient(
-    to bottom,
-    var(--md-primary-fg-color),
-    var(--md-primary-fg-color--light) 99%
-  );
   flex-grow: 2;
 }
 
@@ -85,9 +89,9 @@
     align-items: center;
   }
 
-  .md-sidebar--primary {
+  /* .md-sidebar--primary {
     display: none;
-  }
+  } */
 }
 
 /*
