@@ -1,8 +1,8 @@
 # Contributing
 
-## Developing
+<!-- ## Developing -->
 
-- The site is maintained as an [MkDocs] website using the [Material for MkDocs] theme
+<!-- - The site is maintained as an [MkDocs] website using the [Material for MkDocs] theme
   - See [`mkdocs.yml`](./mkdocs.yml)
 - The site source is contained in the [`src/`](./src/) directory
   - This is configured in [`mkdocs.yml`](./mkdocs.yml)
@@ -10,7 +10,20 @@
 - Dependencies are managed using [Poetry] for Python
   - See [`pyproject.toml`](./pyproject.toml)
 - Common tasks are defined using [Taskfile](https://taskfile.dev/)
-  - See [`Taskfile.yml`](./Taskfile.yml)
+  - See [`Taskfile.yml`](./Taskfile.yml) -->
+
+## Commands
+
+Replace pnpm with your choice of npm / yarn
+
+| Command          | Action                                                         |
+| :--------------- | :------------------------------------------------------------- |
+| `pnpm install`   | Installs dependencies                                          |
+| `pnpm dev`       | Starts local dev server at `localhost:3000`                    |
+| `pnpm build`     | Build your production site to `./dist/`                        |
+| `pnpm postbuild` | Pagefind script to build the static search of your blog posts  |
+| `pnpm preview`   | Preview your build locally, before deploying                   |
+| `pnpm sync`      | Generate types based on your config in `src/content/config.ts` |
 
 ## Testing
 
@@ -40,9 +53,9 @@ task serve
 
 To trigger a deployment
 
-[MkDocs]: <https://www.mkdocs.org/> "MkDocs"
+<!-- [MkDocs]: <https://www.mkdocs.org/> "MkDocs"
 [Material for MkDocs]: <https://squidfunk.github.io/mkdocs-material/> "Material for MkDocs"
-[Poetry]: <https://python-poetry.org/> "Poetry"
+[Poetry]: <https://python-poetry.org/> "Poetry" -->
 [GitHub Pages]: <https://docs.github.com/en/pages> "GitHub Pages"
 [GitHub Actions]: <https://docs.github.com/en/actions> "GitHub Actions"
 
