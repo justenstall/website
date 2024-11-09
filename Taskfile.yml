@@ -3,28 +3,17 @@
 version: "3"
 
 tasks:
-  poetry:
-    silent: true
-    internal: true
+  default:
     cmds:
-      - command -v poetry > /dev/null
-
-  install-deps:
-    silent: true
-    deps:
-      - poetry
-    cmds:
-      - poetry install --no-root
+      - task: serve
 
   serve:
-    deps: [install-deps]
     cmds:
-      - poetry run mkdocs serve
+      - uv run mkdocs serve
 
   build:
-    deps: [install-deps]
     cmds:
-      - poetry run mkdocs build
+      - uv run mkdocs build
 
   lint:
     cmds:
