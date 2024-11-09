@@ -8,17 +8,19 @@ on:
       # mkdocs source
       - "src/**"
       - "mkdocs.yml"
-      # poetry source
+      - "mkdocs.yaml"
+      # python source
       - "pyproject.toml"
-      - "poetry.lock"
+      - "uv.lock"
       # run updated workflows
       - ".github/workflows/**"
   pull_request:
     paths:
       - "src/**"
       - "mkdocs.yml"
+      - "mkdocs.yaml"
       - "pyproject.toml"
-      - "poetry.lock"
+      - "uv.lock"
       - ".github/workflows/**"
   workflow_dispatch:
     inputs:
@@ -58,15 +60,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: true # images are stored with LFS
-      # From: https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#caching-packages
-      - name: Install poetry
-        run: pipx install poetry==1.7.1
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version-file: .python-version
-          cache: poetry
-      # Install with --no-root because project does produce a python package
-      - run: poetry install --no-root
+          enable-cache: true
+      - name: Set up Python (with uv)
+        run: uv python install
+      - name: Install the project
+        run: uv sync
       # From: https://github.com/squidfunk/mkdocs-material/blob/master/docs/publishing-your-site.md#with-github-actions
       - name: Setup MkDocs cache
         uses: actions/cache@v4
@@ -76,7 +77,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - name: Build site with MkDocs
-        run: poetry run mkdocs build
+        run: uv run mkdocs build
       - name: Upload build artifact
         id: upload
         uses: actions/upload-artifact@v4
@@ -138,8 +139,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - name: Install poetry # Needed for updating version in pyproject.toml
-        run: pipx install poetry==1.7.1
       - name: List semantic release plugins
         id: listPlugins
         uses: mikefarah/yq@master
