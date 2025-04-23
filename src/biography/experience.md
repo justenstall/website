@@ -21,6 +21,8 @@ Currently employed as a Data Science Engineer at the University of Dayton Resear
   - Worked for the student-run organization Flyer Enterprises from September 2018 to May 2021. Main project was developing a mobile application, digital loyalty card system, and a simple content management system for keeping menus up-to-date and running promotions viewable in the mobile application. Also contributed to the [FE Digital](https://www.fedigitalagency.com/) team as the lead web developer and consultant for local small businesses.
 - University of Dayton Research Institute
   - Worked for UDRI as a part-time intern during the 2020-2021 school year.
+- University of Dayton
+  - Participated in the College of Arts and Sciences Dean's Summer Fellowship program in the Summer of 2020. Researched machine learning approaches for detecting "deepfake" images.
 - GE Aviation
   - Worked for GE Aviation as a Digital Technology intern in the Summer of 2019. Assisted the military contracts group with data analysis and automation.
 - Cooper Tire & Rubber Company
